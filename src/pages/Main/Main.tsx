@@ -85,9 +85,11 @@ export const Main = () => {
 	const currentTitle = lists.find(item => item.id === currentListId)?.title;
 	return (
 		<div className={styles.wrapper}>
-			{isListDone && <div>
+			{isListDone && <div style={{display: 'block', textAlign: 'center'}}>
 				<h1 className={styles.text}>DONE!</h1>
 				<Button onClick={goToStartList}>Начать заново</Button>
+				<br />
+				<br />
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>}
 			{!isListDone &&<>
@@ -102,9 +104,9 @@ export const Main = () => {
 				<h3 className={cn(styles.h3, {[styles.activeFeeling]: isActiveFeeling})}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<Button appearence="big" onClick={handleClick}>Следущий</Button>
 			</>}
-			<div className="footer" style={{marginTop: 'auto', padding: '20px'}}>
+			{!isListDone && <div className="footer" style={{marginTop: 'auto', padding: '20px'}}>
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
-			</div>
+			</div>}
 		</div>
 	);
 };
