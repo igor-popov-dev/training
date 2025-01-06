@@ -88,6 +88,7 @@ export const Main = () => {
 			{isListDone && <div>
 				<h1 className={styles.text}>DONE!</h1>
 				<Button onClick={goToStartList}>Начать заново</Button>
+				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>}
 			{!isListDone &&<>
 				<select className={styles.select} onChange={handleSelectChange}>
