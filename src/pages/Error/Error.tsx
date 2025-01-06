@@ -2,7 +2,7 @@
 export function Error() {
 	return (
 		<>
-			Error
+			1Error
 		</>
 	);
 }

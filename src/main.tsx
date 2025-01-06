@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import { Error } from './pages/Error/Error';
 import { Final } from './pages/Final/Final';
 import { Main } from './pages/Main/Main';
 import { store } from './store/store';
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
 		path: '/final',
 		element: <Final />
 		
-	},
+	}
 	// {
 	// 	path: '/auth',
 	// 	element: <AuthLayout />,
@@ -35,10 +34,10 @@ const router = createBrowserRouter([
 	// 		}
 	// 	]
 	// },
-	{
-		path: '*',
-		element: <Error />
-	}
+	// {
+	// 	path: '*',
+	// 	element: <Error />
+	// }
 ]);
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
