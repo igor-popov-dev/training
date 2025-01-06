@@ -19,7 +19,7 @@ export const Final = () => {
     			Проходите этот список снова и снова, пока вы не почувствуете себя бодрым в отношении вашего непосредственного окружения.
 				</p>
 			</div>
-			<Button  onClick={() => navigate('/')}>На главную</Button>
+			<Button  onClick={() => navigate('/training/')}>На главную</Button>
 		</div>
 	);
 };

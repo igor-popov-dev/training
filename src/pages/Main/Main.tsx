@@ -98,7 +98,7 @@ export const Main = () => {
 				<Button appearence="big" onClick={handleClick}>Следущий</Button>
 			</>}
 			<div className="footer" style={{marginTop: 'auto', padding: '20px'}}>
-				<Button  onClick={() => navigate('/final')}>Закончить</Button>
+				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>
 		</div>
 	);
