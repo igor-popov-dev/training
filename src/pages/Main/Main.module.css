@@ -60,7 +60,7 @@
     margin: 20px 0;
 }
 
-.input[type="text"] {
+.input[type="number"] {
       width: 70px;
       text-align: center;
       padding: 10px 15px;
@@ -76,7 +76,7 @@
       transition: box-shadow 0.3s, border-color 0.3s;
     }
 
-.input[type="text"]:focus {
+.input[type="number"]:focus {
     border-color: #ffffff;
     box-shadow: 
     0 0 15px rgba(72, 187, 255, 1),

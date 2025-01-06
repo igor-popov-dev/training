@@ -54,6 +54,10 @@ export const Main = () => {
 	};
 	const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target?.value;
+		if (!+value && value !== '') {
+			return;
+		}
+
 		if (+value > phrases.length || value === '0') {
 			return;
 		}
@@ -90,7 +94,7 @@ export const Main = () => {
 					{lists.map(item => <option value={item.id}>{item.theme}</option>)}
 				</select>
 				<div className={styles.text}>всего карточек в списке: {phrases.length}</div>
-				<input className={styles.input} type="text" value={phraseIndexInput} onChange={handleChange}/>
+				<input className={styles.input} type="number" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/>
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
 				<h1 className={styles.h1}>{currentTitle}</h1>
 				<h2 className={styles.h2}>{currentPhrase}</h2>
