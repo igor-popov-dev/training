@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://igor-popov-dev.github.io/training/",
+  "homepage": "https://igor-popov-dev.github.io/training",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
