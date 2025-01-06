@@ -32,8 +32,6 @@
     color: white;
     background: #1f2937;
     min-width: 100px;
-    min-height: 10px;
-    max-height: 400px;
     transition: 0.3s;
     height: auto;
     width: auto;
