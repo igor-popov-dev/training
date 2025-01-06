@@ -9,12 +9,12 @@ import { store } from './store/store';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '/training/',
 		element: <Main />
 		
 	},
 	{
-		path: '/final',
+		path: '/training/final',
 		element: <Final />
 		
 	}
