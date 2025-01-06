@@ -199,3 +199,78 @@
         text-align: center;
     }
 }
+
+/* .defenition {
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #1f2937;
+      box-shadow: 
+        0 0 10px rgba(72, 187, 255, 0.8),
+        0 0 20px rgba(72, 187, 255, 0.6),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+      color: #d1d5db;
+      position: relative;
+    }
+
+    .defenition:before {
+      content: "💡";
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 30px;
+      color: #48bbff;
+    }
+
+    .defenition h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #48bbff;
+    }
+
+    .defenition p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .defenition strong {
+      color: #00d4ff;
+    }
+
+    .defenition:hover {
+      box-shadow: 
+        0 0 15px rgba(72, 187, 255, 1),
+        0 0 30px rgba(72, 187, 255, 0.8),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+    } */
+
+    .defenition {
+      max-width: 400px;
+      padding: 15px 20px;
+      border-radius: 10px;
+      background: #161b22;
+      border: 1px solid #2a3038;
+      color: #a0aec0;
+      font-size: 14px;
+      line-height: 1.6;
+      box-shadow: none;
+      position: relative;
+    }
+
+    /* .defenition:before {
+      content: "ℹ️";
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 18px;
+      color: #6b7280;
+    } */
+        /* .defenition:before {
+      content: "💡";
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 30px;
+      color: #48bbff;
+    } */

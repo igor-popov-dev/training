@@ -2,16 +2,17 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import { feelings } from '../../data/feelings';
+import { feelingsItems } from '../../data/feelings';
 import { lists } from '../../data/lists/lists';
 import styles from './Main.module.css';
 
 
-const randomizeFeeling = () => Math.floor(Math.random() * feelings.length);
 
 export const Main = () => {
+	const randomizeFeeling = () => Math.floor(Math.random() * feelings.length);
 	const navigate = useNavigate();
 	const [phrases, setPhrases] = useState<string[]>([]);
+	const [feelings, setFeelings] = useState<string[]>([]);
 	const [currentListId, setCurrentListId] = useState<number>(1);
 	const [phraseIndex, setPhraseIndex] = useState<number>(0);
 	const [phraseIndexInput, setPhraseIndexInput] = useState<string>('1');
@@ -74,6 +75,7 @@ export const Main = () => {
 
 	useEffect(()=> {
 		setPhrases(lists.find(item => item.id === currentListId)?.phrases as string[]);
+		setFeelings(feelingsItems.map(item => item.name));
 		goToStartList();
 	}, [currentListId]);
 
@@ -102,6 +104,7 @@ export const Main = () => {
 				<h1 className={styles.h1}>{currentTitle}</h1>
 				<h2 className={styles.h2}>{currentPhrase}</h2>
 				<h3 className={cn(styles.h3, {[styles.activeFeeling]: isActiveFeeling})}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
+				<p className={styles.defenition}>{feelingsItems[feelingIndex].description}</p>
 				<Button appearence="big" onClick={handleClick}>Следущий</Button>
 			</>}
 			{!isListDone && <div className="footer" style={{marginTop: 'auto', padding: '20px'}}>
