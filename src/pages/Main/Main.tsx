@@ -80,6 +80,10 @@ export const Main = () => {
 		goToStartList();
 	}, [currentListId]);
 
+	useEffect(()=> {
+		setQuestionIndex(0);
+	}, [phraseIndex]);
+
 	const setRandomFeeling = () => {
 		setFeelingIndex(randomizeFeeling());
 	};
