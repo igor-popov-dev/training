@@ -15,6 +15,7 @@ export const Main = () => {
 	const [feelings, setFeelings] = useState<string[]>([]);
 	const [currentListId, setCurrentListId] = useState<number>(1);
 	const [phraseIndex, setPhraseIndex] = useState<number>(0);
+	const [questionIndex, setQuestionIndex] = useState<number>(0);
 	const [phraseIndexInput, setPhraseIndexInput] = useState<string>('1');
 	const [feelingIndex, setFeelingIndex] = useState<number>(randomizeFeeling());
 	const [isListDone, setIsListDone] = useState<boolean>(false);
@@ -83,8 +84,25 @@ export const Main = () => {
 		setFeelingIndex(randomizeFeeling());
 	};
 
+	const currentQuestions = lists.find(item => item.id === currentListId)?.questions;
 	const currentPhrase =  phrases[phraseIndex] ? `${phraseIndex + 1}. ${phrases[phraseIndex]}` : 'тут будет описан момент';
-	const currentTitle = lists.find(item => item.id === currentListId)?.title;
+	const currentTitle = currentQuestions?.[questionIndex] ?? 'Вопрос';
+
+	const yes = () => {
+		setQuestionIndex( value => {
+			value++;
+			if (value === currentQuestions?.length) {
+				handleClick();
+				return 0;
+			}
+			return value;
+		});
+	};
+
+	const no = () => {
+		handleClick();
+		setQuestionIndex(0);
+	};
 	return (
 		<div className={styles.wrapper}>
 			{isListDone && <div style={{display: 'block', textAlign: 'center'}}>
@@ -105,7 +123,11 @@ export const Main = () => {
 				<h2 className={styles.h2}>{currentPhrase}</h2>
 				<h3 className={cn(styles.h3, {[styles.activeFeeling]: isActiveFeeling})}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<p className={styles.defenition}>{feelingsItems[feelingIndex].description}</p>
-				<Button appearence="big" onClick={handleClick}>Следущий</Button>
+				{/* <Button appearence="big" onClick={handleClick}>Следущий</Button> */}
+				<div className={styles.buttons}>
+					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>
+					<Button appearence="big" onClick={no}>Нет</Button>
+				</div>
 			</>}
 			{!isListDone && <div className="footer" style={{marginTop: 'auto', padding: '20px'}}>
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>

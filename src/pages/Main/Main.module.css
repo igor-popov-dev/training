@@ -258,19 +258,8 @@
       position: relative;
     }
 
-    /* .defenition:before {
-      content: "ℹ️";
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      font-size: 18px;
-      color: #6b7280;
-    } */
-        /* .defenition:before {
-      content: "💡";
-      position: absolute;
-      top: -20px;
-      left: 20px;
-      font-size: 30px;
-      color: #48bbff;
-    } */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
