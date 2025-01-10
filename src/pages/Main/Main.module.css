@@ -30,7 +30,7 @@
     justify-content: center;
     flex-direction: column;
     background: #0d1117;
-    padding: 20px;
+    padding: 64px 20px 20px;
     box-sizing: border-box;
 }
 
@@ -39,6 +39,7 @@
     margin-bottom: 70px;
     margin-top: 70px;
     color: white;
+    text-align: center;
     transition: 0.3s;
     /* text-shadow: 
         0 0 3px #48bbff,
@@ -60,6 +61,10 @@
         0 0 25px rgba(0, 212, 255, 0.3);
       transition: text-shadow 0.3s ease-in-out;
 } */
+
+.h1 span {
+  color: rgba(72, 187, 255, 1);
+}
 
 .h2 {
     font-size: 36px;
@@ -98,7 +103,11 @@
 
 .text {
     color: white;
-    margin: 20px 0;
+    margin: 0 0 20px;
+    max-width: 800px;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
 }
 
 .input[type="number"] {
@@ -170,13 +179,18 @@
 .input[type="range"] {
     cursor: pointer;
     width: 100%;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    margin: 0;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .theme {
     color: white;
     font-size: 24px;
-    margin: 20px 0 0;
 }
 
 .select {
@@ -224,11 +238,12 @@
 
 @media (max-width: 768px) {
     .h1 {
-        font-size: 20px;
+        font-size: 24px;
+        text-align: center;
         margin: 40px 0;
     }
     .h2 {
-        font-size: 24px;
+        font-size: 28px;
         padding: 20px;
     }
     .h3 {
@@ -237,9 +252,6 @@
     }
     .select {
         font-size: 18px;
-    }
-    .text {
-        text-align: center;
     }
 }
 
@@ -305,4 +317,57 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.shuffle-button {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 25px;
+  background: #161b22;
+  color: #a0aec0;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 
+    0 0 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 10px;
+}
+
+.shuffle-button.active {
+  background: #48bbff;
+  color: #0d1117;
+  box-shadow: 
+    0 0 10px rgba(72, 187, 255, 0.8),
+    0 0 20px rgba(72, 187, 255, 0.6),
+    0 0 30px rgba(72, 187, 255, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.shuffle-button:hover {
+  box-shadow: 
+    0 0 8px rgba(72, 187, 255, 0.5),
+    0 0 15px rgba(72, 187, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.shuffle-button.active:hover {
+  box-shadow: 
+    0 0 15px rgba(72, 187, 255, 1),
+    0 0 25px rgba(72, 187, 255, 0.8),
+    0 0 35px rgba(72, 187, 255, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.theme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
 }

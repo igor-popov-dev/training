@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import { Header } from '../../components/Header/Header';
 import { feelingsItems } from '../../data/feelings';
 import { lists } from '../../data/lists/lists';
 import styles from './Main.module.css';
@@ -107,7 +108,16 @@ export const Main = () => {
 		handleClick();
 		setQuestionIndex(0);
 	};
-	return (
+	return (<>
+		<Header title={'Выбор списка вопросов'}>
+			<div className={styles.theme}>
+				<select className={styles.select} onChange={handleSelectChange}>
+					{lists.map(item => <option value={item.id}>{item.theme}</option>)}
+				</select>
+				<div className={styles.text}>всего карточек в списке: {phrases.length}</div>
+				<input className={styles.input} type="number" pattern="[0-9]*" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/>
+			</div>
+		</Header>
 		<div className={styles.wrapper}>
 			{isListDone && <div style={{display: 'block', textAlign: 'center'}}>
 				<h1 className={styles.text}>DONE!</h1>
@@ -117,13 +127,14 @@ export const Main = () => {
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>}
 			{!isListDone &&<>
-				<select className={styles.select} onChange={handleSelectChange}>
+				{/* <select className={styles.select} onChange={handleSelectChange}>
 					{lists.map(item => <option value={item.id}>{item.theme}</option>)}
 				</select>
 				<div className={styles.text}>всего карточек в списке: {phrases.length}</div>
-				<input className={styles.input} type="number" pattern="[0-9]*" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/>
+				<input className={styles.input} type="number" pattern="[0-9]*" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/> */}
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
-				<h1 className={styles.h1}>{currentTitle}</h1>
+				{/* <h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }}>{currentTitle}</h1> */}
+				<h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }} />
 				<h2 className={styles.h2}>{currentPhrase}</h2>
 				<h3 className={cn(styles.h3, {[styles.activeFeeling]: isActiveFeeling})}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<p className={styles.defenition}>{feelingsItems[feelingIndex].description}</p>
@@ -137,5 +148,6 @@ export const Main = () => {
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>}
 		</div>
+	</>
 	);
 };
