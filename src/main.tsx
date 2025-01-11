@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+import { Donat } from './pages/Donat/Donat';
 import { Final } from './pages/Final/Final';
 import { Main } from './pages/Main/Main';
 import { store } from './store/store';
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
 	{
 		path: '/training/final',
 		element: <Final />
+		
+	},
+	{
+		path: '/training/donat',
+		element: <Donat />
 		
 	}
 ]);

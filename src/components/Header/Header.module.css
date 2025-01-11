@@ -10,6 +10,7 @@
   z-index: 1000;
   display: flex;
   justify-content: space-between;
+  z-index: 10000;
   align-items: center;
 }
 

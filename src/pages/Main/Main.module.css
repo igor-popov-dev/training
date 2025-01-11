@@ -30,7 +30,7 @@
     justify-content: center;
     flex-direction: column;
     background: #0d1117;
-    padding: 64px 20px 20px;
+    padding: 106px 20px 20px;
     box-sizing: border-box;
 }
 
@@ -182,7 +182,8 @@
     /* margin-top: 20px; */
     margin: 0;
     position: fixed;
-    top: 58px;
+    /* top: 58px; */
+    top: 101px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -370,4 +371,22 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
+}
+
+.donat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #fff;
+  background: #161b22;
+  padding: 10px 20px;
+  /* width: 100px; */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 64.5px;
+  z-index: 1000;
+  border: none;
 }
