@@ -110,7 +110,7 @@ export const Main = () => {
 	};
 
 	const goToDonat = () => {
-		const url = 'https://www.donationalerts.com/r/devforsoul?clckid=c3c8c861';
+		const url = 'https://www.donationalerts.com/r/devforsoul';
 		window.open(url, '_blank');
 	};
 	return (<>
