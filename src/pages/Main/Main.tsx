@@ -104,8 +104,11 @@ export const Main = () => {
 
 		return new Promise((resolve) => {
 			setTimeout(() => {
+				scrollToTop(); // Включить анимацию исчезновения
+			}, 500);
+			
+			setTimeout(() => {
 				fn();
-				scrollToTop();
 				setShowFadeOut(true); // Включить анимацию исчезновения
 			}, 1000);
 
