@@ -100,24 +100,25 @@ export const Main = () => {
 	const currentPhrase =  phrases[phraseIndex] ? `${phraseIndex + 1}. ${phrases[phraseIndex]}` : 'тут будет описан момент';
 	const currentTitle = currentQuestions?.[questionIndex] ?? 'Вопрос';
 	const animateThx = async (fn: ()=>void): Promise<void> => {
-		setShowThx(true); // Показать блок "Спасибо"
-		setShowFadeIn(true); // Включить анимацию появления
+		setShowThx(true);
+		setShowFadeIn(true);
 
 		return new Promise((resolve) => {
 			setTimeout(() => {
-				scrollToTop(); // Включить анимацию исчезновения
+				scrollToTop(); 
 			}, 500);
 
 			setTimeout(() => {
 				fn();
-				setShowFadeOut(true); // Включить анимацию исчезновения
+				scrollToTop(); 
+				setShowFadeOut(true);
 			}, 1000);
 
 			setTimeout(() => {
-				setShowThx(false); // Скрыть блок
-				setShowFadeIn(false); // Сбросить состояние появления
-				setShowFadeOut(false); // Сбросить состояние исчезновения
-				resolve(); // Завершить промис
+				setShowThx(false); 
+				setShowFadeIn(false);
+				setShowFadeOut(false);
+				resolve(); 
 			}, 2000);
 		});
 	};
