@@ -10,6 +10,12 @@ import styles from './Main.module.css';
 
 
 export const Main = () => {
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0
+		});
+	};
+
 	const randomizeFeeling = () => Math.floor(Math.random() * feelings.length);
 	const navigate = useNavigate();
 	const [phrases, setPhrases] = useState<string[]>([]);
@@ -92,28 +98,57 @@ export const Main = () => {
 	const currentQuestions = lists.find(item => item.id === currentListId)?.questions;
 	const currentPhrase =  phrases[phraseIndex] ? `${phraseIndex + 1}. ${phrases[phraseIndex]}` : 'тут будет описан момент';
 	const currentTitle = currentQuestions?.[questionIndex] ?? 'Вопрос';
+	const animateThx = async (fn: ()=>void): Promise<void> => {
+		setShowThx(true); // Показать блок "Спасибо"
+		setShowFadeIn(true); // Включить анимацию появления
 
-	const yes = () => {
-		setQuestionIndex( value => {
-			value++;
-			if (value === currentQuestions?.length) {
-				handleClick();
-				return 0;
-			}
-			return value;
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				fn();
+				scrollToTop();
+				setShowFadeOut(true); // Включить анимацию исчезновения
+			}, 1000);
+
+			setTimeout(() => {
+				setShowThx(false); // Скрыть блок
+				setShowFadeIn(false); // Сбросить состояние появления
+				setShowFadeOut(false); // Сбросить состояние исчезновения
+				resolve(); // Завершить промис
+			}, 2000);
 		});
 	};
+	const yes = async () => {
+		await animateThx(() => {
+			setQuestionIndex( value => {
+				value++;
+				if (value === currentQuestions?.length) {
+					handleClick();
+					return 0;
+				}
+				return value;
+			});
+		});
+		
+	};
 
-	const no = () => {
-		handleClick();
-		setQuestionIndex(0);
+	const no = async () => {
+		await animateThx(() => {
+			handleClick();
+			setQuestionIndex(0);
+		});
 	};
 
 	const goToDonat = () => {
 		const url = 'https://www.donationalerts.com/r/devforsoul';
 		window.open(url, '_blank');
 	};
+	const [showThx, setShowThx] = useState<boolean>(false);
+	const [showFadeIn, setShowFadeIn] = useState<boolean>(false);
+	const [showFadeOut, setShowFadeOut] = useState<boolean>(false);
 	return (<>
+		<div className={cn(styles.thxWrapper, {[styles.displayFlex]: showThx}, {[styles.fadeIn]: showFadeIn}, {[styles.fadeOut]: showFadeOut})}>
+			<h2 className={styles.thxText}>Спасибо!</h2>
+		</div>
 		<Header title={'Выбор списка вопросов'}>
 			<div className={styles.theme}>
 				<select className={styles.select} onChange={handleSelectChange}>
@@ -151,6 +186,7 @@ export const Main = () => {
 				{/* <Button appearence="big" onClick={handleClick}>Следущий</Button> */}
 				<div className={styles.buttons}>
 					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>
+					{/* <Button appearence="big" onClick={scrollToTop}>Да (Что это было?)</Button> */}
 					<Button appearence="big" onClick={no}>Нет</Button>
 				</div>
 			</>}
