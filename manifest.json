@@ -3,7 +3,8 @@
   "description": "Приложение для самоанализа",
   "start_url": "https://igor-popov-dev.github.io/training/",
   "lang": "ru-RU",
-  "theme_color": "#0d1117",
+  "theme_color": "#161b22",
+  "background_color": "#161b22",
   "display": "standalone",
   "icons": [
     {
