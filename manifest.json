@@ -7,9 +7,9 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "appLogo.png",
+      "src": "appLogo.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ]
 }
