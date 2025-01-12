@@ -13,6 +13,7 @@ export const Main = () => {
 	const scrollToTop = () => {
 		window.scrollTo({
 			top: 0
+			// behavior: 'smooth'
 		});
 	};
 
@@ -104,16 +105,13 @@ export const Main = () => {
 		setShowFadeIn(true);
 
 		return new Promise((resolve) => {
-			setTimeout(() => {
-				scrollToTop(); 
-			}, 500);
 
 			setTimeout(() => {
 				fn();
 				scrollToTop(); 
 				setShowFadeOut(true);
 			}, 1000);
-
+			
 			setTimeout(() => {
 				setShowThx(false); 
 				setShowFadeIn(false);
