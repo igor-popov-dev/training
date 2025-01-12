@@ -3,10 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/training/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/training/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/training/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/training/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/training/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/training/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/training/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/training/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/training/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/training/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/training/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/training/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/training/favicon-16x16.png">
+<link rel="manifest" href="/training/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/training/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Самоанализ">
+<meta name="apple-mobile-web-app-title" content="Самоанализ">
+<meta name="theme-color" content="#0d1117">
+<meta name="msapplication-navbutton-color" content="#0d1117">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="msapplication-starturl" content="/">
+
+<link rel="icon" type="image/png" sizes="192x192" href="appLogo.png">
+<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="appLogo.png">
+<script src="sw-toolbox.js"></script>
+
+<script>
+if (‘serviceWorker’ in navigator) {
+ window.addEventListener(‘load’, function() {  
+   navigator.serviceWorker.register(‘/sw.js’).then(
+     function(registration) {
+       // Registration was successful
+       console.log(‘ServiceWorker registration successful with scope: ‘, registration.scope); },
+     function(err) {
+       // registration failed :(
+       console.log(‘ServiceWorker registration failed: ‘, err);
+     });
+ });
+}
+</script>
+<script src="sw.js"></script>
     <title>Training</title>
     <script type="module" crossorigin src="/training/assets/index-B-ct3t7H.js"></script>
     <link rel="stylesheet" crossorigin href="/training/assets/index-DtMJS1x1.css">
