@@ -16,7 +16,8 @@ export const Main = () => {
 		});
 	};
 
-	const randomizeFeeling = () => Math.floor(Math.random() * feelings.length);
+	const randomizeFeeling = () => Math.floor(Math.random() * feelingsItems.length);
+
 	const navigate = useNavigate();
 	const [phrases, setPhrases] = useState<string[]>([]);
 	const [feelings, setFeelings] = useState<string[]>([]);
@@ -106,7 +107,7 @@ export const Main = () => {
 			setTimeout(() => {
 				scrollToTop(); // Включить анимацию исчезновения
 			}, 500);
-			
+
 			setTimeout(() => {
 				fn();
 				setShowFadeOut(true); // Включить анимацию исчезновения
