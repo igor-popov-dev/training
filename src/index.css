@@ -13,6 +13,7 @@ html, body {
   touch-action: manipulation;
   -ms-touch-action: manipulation; 
   overscroll-behavior: none;
+  background: #161b22;
 }
 body {
     font-family: "Open Sans", sans-serif;
