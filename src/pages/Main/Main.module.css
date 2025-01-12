@@ -49,7 +49,7 @@
 }
 
 .wrapper, .thxWrapper {
-    min-height: 100svh;
+    min-height: calc(100svh - 106px);
     width: 100%;
     display: flex;
     align-items: center;
