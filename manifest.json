@@ -1,6 +1,11 @@
 {
- "name": "App",
- "icons": [
+  "name": "Самоанализ",
+  "description": "Приложение для самоанализа",
+  "start_url": "https://igor-popov-dev.github.io/training/",
+  "lang": "ru-RU",
+  "theme_color": "#0d1117",
+  "display": "standalone",
+  "icons": [
   {
    "src": "\/android-icon-36x36.png",
    "sizes": "36x36",
