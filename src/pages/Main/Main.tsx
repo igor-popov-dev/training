@@ -108,8 +108,8 @@ export const Main = () => {
 
 			setTimeout(() => {
 				fn();
-				scrollToTop(); 
 				setShowFadeOut(true);
+				scrollToTop(); 
 			}, 1000);
 			
 			setTimeout(() => {
