@@ -177,8 +177,7 @@ export const Main = () => {
 			}, 1000); // Сброс через 1 секунду
 		}
 
-		if (clickCount >= 10) {
-			// Если порог кликов достигнут, активируем функционал
+		if (clickCount >= 5) {
 			alert('секретный список вопросов активирован!');
 			setLists(customLists);
 			setIsActivated(true);
