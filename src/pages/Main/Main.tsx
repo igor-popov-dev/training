@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
 import { feelingsItems } from '../../data/feelings';
-import { lists } from '../../data/lists/lists';
+import { customLists } from '../../data/lists/customList';
+import { lists as defaultList } from '../../data/lists/lists';
 import styles from './Main.module.css';
 
 
@@ -21,6 +22,7 @@ export const Main = () => {
 
 	const navigate = useNavigate();
 	const [phrases, setPhrases] = useState<string[]>([]);
+	const [lists, setLists] = useState(defaultList);
 	const [feelings, setFeelings] = useState<string[]>([]);
 	const [currentListId, setCurrentListId] = useState<number>(1);
 	const [phraseIndex, setPhraseIndex] = useState<number>(0);
@@ -30,6 +32,11 @@ export const Main = () => {
 	const [isListDone, setIsListDone] = useState<boolean>(false);
 	const [isActiveFeeling, setIsActiveFeeling] = useState<boolean>(true);
 	
+	useEffect(()=>{
+		setPhrases(lists.find(item => item.id === currentListId)?.phrases as string[]);
+		currentQuestions = lists.find(item => item.id === currentListId)?.questions;
+	},[lists, currentListId]);
+
 	const goToStartList = () => {
 		setPhraseIndex(0);
 		setPhraseIndexInput('1');
@@ -97,7 +104,7 @@ export const Main = () => {
 		setFeelingIndex(randomizeFeeling());
 	};
 
-	const currentQuestions = lists.find(item => item.id === currentListId)?.questions;
+	let currentQuestions = lists.find(item => item.id === currentListId)?.questions;
 	const currentPhrase =  phrases[phraseIndex] ? `${phraseIndex + 1}. ${phrases[phraseIndex]}` : 'тут будет описан момент';
 	const currentTitle = currentQuestions?.[questionIndex] ?? 'Вопрос';
 	const animateThx = async (fn: ()=>void): Promise<void> => {
@@ -148,6 +155,38 @@ export const Main = () => {
 	const [showThx, setShowThx] = useState<boolean>(false);
 	const [showFadeIn, setShowFadeIn] = useState<boolean>(false);
 	const [showFadeOut, setShowFadeOut] = useState<boolean>(false);
+
+
+
+	const [clickCount, setClickCount] = useState(0);
+	const [isActivated, setIsActivated] = useState(false);
+
+	const handleHiddenClick = () => {
+		if (!isActivated) {
+			setClickCount((prev) => prev + 1);
+		}
+	};
+
+	useEffect(() => {
+		let timer: NodeJS.Timeout;
+
+		if (clickCount > 0) {
+			// Устанавливаем таймер для сброса счётчика
+			timer = setTimeout(() => {
+				setClickCount(0);
+			}, 1000); // Сброс через 1 секунду
+		}
+
+		if (clickCount >= 10) {
+			// Если порог кликов достигнут, активируем функционал
+			alert('секретный список вопросов активирован!');
+			setLists(customLists);
+			setIsActivated(true);
+			setClickCount(0);
+		}
+
+		return () => clearTimeout(timer); // Чистим таймер при размонтировании
+	}, [clickCount]);
 	return (<>
 		<div className={cn(styles.thxWrapper, {[styles.displayFlex]: showThx}, {[styles.fadeIn]: showFadeIn}, {[styles.fadeOut]: showFadeOut})}>
 			<h2 className={styles.thxText}>Спасибо!</h2>
@@ -197,6 +236,7 @@ export const Main = () => {
 				<Button  onClick={() => navigate('/training/final')}>Закончить</Button>
 			</div>}
 		</div>
+		<div className={styles.secret} onClick={handleHiddenClick}/>
 	</>
 	);
 };
