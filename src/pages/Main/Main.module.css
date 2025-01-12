@@ -56,7 +56,8 @@
     justify-content: center;
     flex-direction: column;
     background: #0d1117;
-    padding: 106px 20px 20px;
+    padding: 0 20px 20px;
+    margin-top: 106px;
     box-sizing: border-box;
     overflow-y: auto;
 }
