@@ -64,3 +64,12 @@
 .accordion-content.active {
   max-height: 150px; /* Adjust based on your content */
 }
+
+.secret {
+  background: transparent;
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
