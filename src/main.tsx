@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+import { Bad } from './pages/Bad/Bad';
 import { Donat } from './pages/Donat/Donat';
 import { Final } from './pages/Final/Final';
 import { Main } from './pages/Main/Main';
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
 	{
 		path: '/training/final',
 		element: <Final />
+		
+	},
+	{
+		path: '/training/bad',
+		element: <Bad />
 		
 	},
 	{

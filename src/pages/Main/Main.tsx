@@ -197,6 +197,7 @@ export const Main = () => {
 				</select>
 				<div className={styles.text}>всего карточек в списке: {phrases.length}</div>
 				<input className={styles.input} type="number" pattern="[0-9]*" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/>
+				<button className={styles.shuffleButton} onClick={()=>navigate('/training/bad')}>Если вспоминание некоторых вещей вызвало у вас неприятные ощущения</button>
 			</div>
 		</Header>
 		<div className={styles.wrapper}>
@@ -219,15 +220,12 @@ export const Main = () => {
 					</svg>
 					 Сделай донат</button>
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
-				{/* <h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }}>{currentTitle}</h1> */}
 				<h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }} />
 				<h2 className={styles.h2}>{currentPhrase}</h2>
 				<h3 className={cn(styles.h3, {[styles.activeFeeling]: isActiveFeeling})}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<p className={styles.defenition}>{feelingsItems[feelingIndex].description}</p>
-				{/* <Button appearence="big" onClick={handleClick}>Следущий</Button> */}
 				<div className={styles.buttons}>
 					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>
-					{/* <Button appearence="big" onClick={scrollToTop}>Да (Что это было?)</Button> */}
 					<Button appearence="big" onClick={no}>Нет</Button>
 				</div>
 			</>}
