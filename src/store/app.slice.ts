@@ -45,14 +45,12 @@ const appSlice = createSlice({
 			state.phrases = action.payload;
 		},
 		setCurrentListId: (state, action: PayloadAction<number>) => {
-			console.log({action});
 			state.currentListId = action.payload;
 			state.phraseIndex = 0;
 			state.currentQuestions = state.lists.find(item => item.id === action.payload)?.questions || [];
 			state.phrases = state.lists.find(item => item.id === action.payload)?.phrases ?? [];
 			state.questionIndex = 0;
 			state.phraseIndexInput = '1';
-			console.log(state);
 		},
 		setPhraseIndex: (state, action: PayloadAction<number>) => {
 			state.phraseIndex = action.payload;
@@ -64,8 +62,17 @@ const appSlice = createSlice({
 			state.phraseIndex = value === state.phrases.length ? 0 : value;
 			if (value >= state.phrases.length) {
 				// state.isListDone = true;
-				appSlice.caseReducers.setCurrentListId(state, {payload: state.currentListId + 1, type: 'app/setCurrentListId'});
-				appSlice.caseReducers.goToStartList(state);
+				state.currentListId = state.currentListId + 1;
+				state.phraseIndex = 0;
+				state.currentQuestions = state.lists.find(item => item.id === state.currentListId + 1)?.questions || [];
+				state.phrases = state.lists.find(item => item.id === state.currentListId + 1)?.phrases ?? [];
+				state.questionIndex = 0;
+				state.phraseIndexInput = '1';
+				// appSlice.caseReducers.setCurrentListId(state, {payload: state.currentListId + 1, type: 'app/setCurrentListId'});
+				// state.phraseIndex = 0;
+				// state.phraseIndexInput = '1';
+				state.feelingIndex = randomizeFeeling();
+				// appSlice.caseReducers.goToStartList(state);
 			}
 		},
 		setQuestionIndex: (state, action: PayloadAction<number>) => {
@@ -104,8 +111,28 @@ const appSlice = createSlice({
 			// state.isListDone = false;
 		},
 		goToNextPhrase: (state) => {
-			appSlice.caseReducers.nextPhraseIndex(state);
-			appSlice.caseReducers.nextFeelingIndex(state);
+			let value = state.phraseIndex;
+			value++;
+			state.phraseIndex = value === state.phrases.length ? 0 : value;
+			if (value >= state.phrases.length) {
+				// state.isListDone = true;
+				state.currentListId = state.currentListId + 1;
+				state.phraseIndex = 0;
+				state.currentQuestions = state.lists.find(item => item.id === state.currentListId + 1)?.questions || [];
+				state.phrases = state.lists.find(item => item.id === state.currentListId + 1)?.phrases ?? [];
+				state.questionIndex = 0;
+				state.phraseIndexInput = '1';
+				// appSlice.caseReducers.setCurrentListId(state, {payload: state.currentListId + 1, type: 'app/setCurrentListId'});
+				// state.phraseIndex = 0;
+				// state.phraseIndexInput = '1';
+				state.feelingIndex = randomizeFeeling();
+				// appSlice.caseReducers.goToStartList(state);
+			}
+			// appSlice.caseReducers.nextPhraseIndex(state);
+			let valueTemp = state.feelingIndex;
+			valueTemp++;
+			state.feelingIndex =  valueTemp === state.feelings.length ? 0 : valueTemp;
+			// appSlice.caseReducers.nextFeelingIndex(state);
 			state.phraseIndexInput = state.phraseIndex + 1 + '';
 			state.questionIndex = 0;
 		}
