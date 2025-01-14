@@ -73,7 +73,25 @@ const appSlice = createSlice({
 			state.questionIndex = action.payload;
 		},
 		nextQuestionIndex: (state) => {
-			state.questionIndex += 1;
+			if (state.questionIndex + 1 === state.currentQuestions.length) {
+				const isEndOfList = state.phraseIndex + 1 >= state.phrases.length;
+
+				if (isEndOfList) {
+					state.currentListId += 1;
+					const nextList = lists.find(item => item.id === state.currentListId);
+					state.phrases = nextList?.phrases || [];
+					state.currentQuestions = nextList?.questions || [];
+					state.phraseIndex = 0;
+				} else {
+					state.phraseIndex += 1;
+				}
+
+				state.phraseIndexInput = (state.phraseIndex + 1).toString();
+				state.feelingIndex = randomizeFeeling();
+				state.questionIndex = 0;
+			} else {
+				state.questionIndex += 1;
+			}
 		},
 		setFeelingIndex: (state, action: PayloadAction<number>) => {
 			state.feelingIndex = action.payload;
