@@ -18668,14 +18668,6 @@ function formatProdErrorMessage(code) {
   return `Minified Redux Toolkit error #${code}; visit https://redux-toolkit.js.org/Errors?code=${code} for the full message or use the non-minified dev environment for full errors. `;
 }
 const randomizeFeeling = () => Math.floor(Math.random() * feelingsItems.length);
-const loadState = () => {
-  try {
-    const serializedState = localStorage.getItem("appState");
-    return serializedState ? JSON.parse(serializedState) : {};
-  } catch {
-    return {};
-  }
-};
 const initialState = {
   phrases: [],
   currentQuestions: [],
@@ -18688,8 +18680,8 @@ const initialState = {
   feelingIndex: 0,
   // isListDone: false,
   isActiveFeeling: true,
-  customListsActivated: false,
-  ...loadState()
+  customListsActivated: false
+  // ...loadState()
 };
 const appSlice = createSlice({
   name: "app",
@@ -19025,4 +19017,4 @@ const router = createBrowserRouter([
 clientExports.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Provider_default, { store, children: /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider2, { router }) }) })
 );
-//# sourceMappingURL=index-BZFgxGa6.js.map
+//# sourceMappingURL=index-CcUhJMdf.js.map
