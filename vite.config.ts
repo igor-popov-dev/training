@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [react()],
 	build: {
 		sourcemap: true, // Включите sourcemaps для диагностики
-		minify: 'esbuild' // Проверьте, какое минификационное средство используется
+		minify: false // Проверьте, какое минификационное средство используется
 	},
 	base: '/training/'
 });
