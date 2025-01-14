@@ -22,6 +22,10 @@ WebApp.expand();
 
 const router = createBrowserRouter([
 	{
+		path: '/',
+		element: <Main />
+		
+	},{
 		path: '/training/',
 		element: <Main />
 		
