@@ -20716,7 +20716,7 @@ const styles = {
   "neon-flicker": "_neon-flicker_z1aca_1"
 };
 const Main = () => {
-  var _a2, _b2;
+  var _a2, _b2, _c;
   const dispatch = useDispatch();
   const {
     phrases,
@@ -20805,7 +20805,7 @@ const Main = () => {
   const [showFadeOut, setShowFadeOut] = reactExports.useState(false);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: cn(styles.thxWrapper, { [styles.displayFlex]: showThx }, { [styles.fadeIn]: showFadeIn }, { [styles.fadeOut]: showFadeOut }), children: /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: styles.thxText, children: "Спасибо!" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Header, { title: `Cписок: ${(_a2 = lists.find((item) => item.id === currentListId)) == null ? void 0 : _a2.theme}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.theme, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Header, { title: `Cписок: ${((_a2 = lists.find((item) => item.id === currentListId)) == null ? void 0 : _a2.theme) ?? ""}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.theme, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("select", { className: styles.select, onChange: handleSelectChange, value: currentListId, children: lists.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: item.id, children: item.theme }, item.id)) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.text, children: [
         "всего карточек в списке: ",
@@ -20824,11 +20824,11 @@ const Main = () => {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles.h1, dangerouslySetInnerHTML: { __html: currentTitle } }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: styles.h2, children: `${phraseIndex + 1}. ${phrases[phraseIndex]}` }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h3", { className: cn(styles.h3), children: [
-          feelingsItems[feelingIndex].name,
+          ((_b2 = feelingsItems == null ? void 0 : feelingsItems[feelingIndex]) == null ? void 0 : _b2.name) ?? "",
           " ",
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.randomize, onClick: setRandomFeeling, children: "🎲" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.defenition, children: ((_b2 = feelingsItems[feelingIndex]) == null ? void 0 : _b2.description) ?? "" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.defenition, children: ((_c = feelingsItems[feelingIndex]) == null ? void 0 : _c.description) ?? "" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.buttons, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { appearence: "big", onClick: yes, children: "Да (Что это было?)" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { appearence: "big", onClick: no, children: "Нет" })
@@ -20880,4 +20880,4 @@ const router = createBrowserRouter([
 clientExports.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Provider_default, { store, children: /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider2, { router }) }) })
 );
-//# sourceMappingURL=index-B1zlxA9D.js.map
+//# sourceMappingURL=index-Ds9Zrbj9.js.map
