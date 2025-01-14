@@ -175,7 +175,7 @@ export const Main = () => {
 		<Header title={`Cписок: ${lists.find(item => item.id === currentListId)?.theme}`}>
 			<div className={styles.theme}>
 				<select className={styles.select} onChange={handleSelectChange} value={currentListId}>
-					{lists.map(item => <option value={item.id}>{item.theme}</option>)}
+					{lists.map(item => <option key={item.id} value={item.id}>{item.theme}</option>)}
 				</select>
 				<div className={styles.text}>всего карточек в списке: {phrases.length}</div>
 				<input className={styles.input} type="number" pattern="[0-9]*" min="1" max={phrases.length} value={phraseIndexInput} onChange={handleChange}/>
@@ -193,7 +193,7 @@ export const Main = () => {
 			<>
 				<button className={styles.donat} onClick={goToDonat}>
 					<svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#750000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#750000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 					</svg>
 					 Сделай донат</button>
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
