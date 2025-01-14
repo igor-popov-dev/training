@@ -4,14 +4,14 @@ import { AppState, List } from './app.type';
 
 const randomizeFeeling = () => Math.floor(Math.random() * feelingsItems.length);
 
-const loadState = (): Partial<AppState> => {
-	try {
-		const serializedState = localStorage.getItem('appState');
-		return serializedState ? JSON.parse(serializedState) : {};
-	} catch {
-		return {};
-	}
-};
+// const loadState = (): Partial<AppState> => {
+// 	try {
+// 		const serializedState = localStorage.getItem('appState');
+// 		return serializedState ? JSON.parse(serializedState) : {};
+// 	} catch {
+// 		return {};
+// 	}
+// };
 
 const initialState: AppState = {
 	phrases: [],
@@ -25,8 +25,8 @@ const initialState: AppState = {
 	feelingIndex: 0,
 	// isListDone: false,
 	isActiveFeeling: true,
-	customListsActivated: false,
-	...loadState()
+	customListsActivated: false
+	// ...loadState()
 };
 
 const appSlice = createSlice({
