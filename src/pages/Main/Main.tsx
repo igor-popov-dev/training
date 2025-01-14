@@ -172,7 +172,7 @@ export const Main = () => {
 		<div className={cn(styles.thxWrapper, {[styles.displayFlex]: showThx}, {[styles.fadeIn]: showFadeIn}, {[styles.fadeOut]: showFadeOut})}>
 			<h2 className={styles.thxText}>Спасибо!</h2>
 		</div>
-		<Header title={`Cписок: ${lists.find(item => item.id === currentListId)?.theme}`}>
+		<Header title={`Cписок: ${lists.find(item => item.id === currentListId)?.theme ?? ''}`}>
 			<div className={styles.theme}>
 				<select className={styles.select} onChange={handleSelectChange} value={currentListId}>
 					{lists.map(item => <option key={item.id} value={item.id}>{item.theme}</option>)}
@@ -199,7 +199,7 @@ export const Main = () => {
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
 				<h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }} />
 				<h2 className={styles.h2}>{`${phraseIndex + 1}. ${phrases[phraseIndex]}`}</h2>
-				<h3 className={cn(styles.h3)}>{feelingsItems[feelingIndex].name} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
+				<h3 className={cn(styles.h3)}>{feelingsItems?.[feelingIndex]?.name ?? ''} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<p className={styles.defenition}>{feelingsItems[feelingIndex]?.description ?? ''}</p>
 				<div className={styles.buttons}>
 					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>
