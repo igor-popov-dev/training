@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
 import { feelingsItems } from '../../data/feelings';
+// import { lists } from '../../data/lists/lists';
 // import { customLists } from '../../data/lists/customList';
+import { lists } from '../../data/lists/lists';
 import {
 	goToNextPhrase,
 	nextFeelingIndex,
@@ -16,8 +18,6 @@ import {
 	setPhraseIndex,
 	setPhraseIndexInput,
 	setQuestionIndex
-	// setQuestionIndex,
-	// toggleActivateCustomLists
 } from '../../store/app.slice';
 import { AppDispatch, RootState } from '../../store/store';
 import styles from './Main.module.css';
@@ -29,8 +29,8 @@ export const Main = () => {
 
 	const {
 		phrases,
-		lists,
-		feelings,
+		// lists,
+		// feelings,
 		// customListsActivated,
 		currentListId,
 		phraseIndex,
@@ -120,11 +120,11 @@ export const Main = () => {
 		
 	};
 
-	useEffect(()=>{
-		if (questionIndex === currentQuestions?.length) {
-			dispatch(goToNextPhrase());
-		}
-	},[questionIndex, currentQuestions, dispatch]);
+	// useEffect(()=>{
+	// 	if (questionIndex === currentQuestions?.length) {
+	// 		dispatch(goToNextPhrase());
+	// 	}
+	// },[questionIndex, currentQuestions, dispatch]);
 
 	const no = async () => {
 		await animateThx(() => {
@@ -199,7 +199,7 @@ export const Main = () => {
 				<input className={styles.input} type="range" min="1" max={phrases.length} step="1" value={phraseIndexInput || 0} onChange={handleChange}></input>
 				<h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }} />
 				<h2 className={styles.h2}>{`${phraseIndex + 1}. ${phrases[phraseIndex]}`}</h2>
-				<h3 className={cn(styles.h3)}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
+				<h3 className={cn(styles.h3)}>{feelingsItems[feelingIndex].name} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
 				<p className={styles.defenition}>{feelingsItems[feelingIndex]?.description ?? ''}</p>
 				<div className={styles.buttons}>
 					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>

@@ -13,8 +13,6 @@ export interface FeelingItem {
 export interface AppState {
   phrases: string[];
   currentQuestions: string[];
-  lists: List[];
-  feelings: string[];
   currentListId: number;
   phraseIndex: number;
   questionIndex: number;
