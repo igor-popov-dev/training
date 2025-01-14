@@ -20615,7 +20615,23 @@ const appSlice = createSlice({
       state.questionIndex = action.payload;
     },
     nextQuestionIndex: (state) => {
-      state.questionIndex += 1;
+      if (state.questionIndex + 1 === state.currentQuestions.length) {
+        const isEndOfList = state.phraseIndex + 1 >= state.phrases.length;
+        if (isEndOfList) {
+          state.currentListId += 1;
+          const nextList = lists.find((item) => item.id === state.currentListId);
+          state.phrases = (nextList == null ? void 0 : nextList.phrases) || [];
+          state.currentQuestions = (nextList == null ? void 0 : nextList.questions) || [];
+          state.phraseIndex = 0;
+        } else {
+          state.phraseIndex += 1;
+        }
+        state.phraseIndexInput = (state.phraseIndex + 1).toString();
+        state.feelingIndex = randomizeFeeling();
+        state.questionIndex = 0;
+      } else {
+        state.questionIndex += 1;
+      }
     },
     setFeelingIndex: (state, action) => {
       state.feelingIndex = action.payload;
@@ -20880,4 +20896,4 @@ const router = createBrowserRouter([
 clientExports.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Provider_default, { store, children: /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider2, { router }) }) })
 );
-//# sourceMappingURL=index-Ds9Zrbj9.js.map
+//# sourceMappingURL=index-9tFdwTKe.js.map
