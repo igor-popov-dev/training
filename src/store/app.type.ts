@@ -20,7 +20,6 @@ export interface AppState {
   questionIndex: number;
   phraseIndexInput: string;
   feelingIndex: number;
-  isListDone: boolean;
   isActiveFeeling: boolean;
   customListsActivated: boolean;
 }

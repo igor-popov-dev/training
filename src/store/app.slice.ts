@@ -23,7 +23,7 @@ const initialState: AppState = {
 	questionIndex: 0,
 	phraseIndexInput: '1',
 	feelingIndex: 0,
-	isListDone: false,
+	// isListDone: false,
 	isActiveFeeling: true,
 	customListsActivated: false,
 	...loadState()
@@ -45,13 +45,14 @@ const appSlice = createSlice({
 			state.phrases = action.payload;
 		},
 		setCurrentListId: (state, action: PayloadAction<number>) => {
+			console.log({action});
 			state.currentListId = action.payload;
-			state.currentQuestions = state.lists.find(item => item.id === state.currentListId)?.questions || [];
-			state.phrases = state.lists.find(item => item.id === state.currentListId)?.phrases ?? [];
-			state.questionIndex = 0;
 			state.phraseIndex = 0;
+			state.currentQuestions = state.lists.find(item => item.id === action.payload)?.questions || [];
+			state.phrases = state.lists.find(item => item.id === action.payload)?.phrases ?? [];
+			state.questionIndex = 0;
 			state.phraseIndexInput = '1';
-			
+			console.log(state);
 		},
 		setPhraseIndex: (state, action: PayloadAction<number>) => {
 			state.phraseIndex = action.payload;
@@ -60,10 +61,12 @@ const appSlice = createSlice({
 		nextPhraseIndex: (state) => {
 			let value = state.phraseIndex;
 			value++;
-			if (value >= state.phrases.length) {
-				state.isListDone = true;
-			}
 			state.phraseIndex = value === state.phrases.length ? 0 : value;
+			if (value >= state.phrases.length) {
+				// state.isListDone = true;
+				appSlice.caseReducers.setCurrentListId(state, {payload: state.currentListId + 1, type: 'app/setCurrentListId'});
+				appSlice.caseReducers.goToStartList(state);
+			}
 		},
 		setQuestionIndex: (state, action: PayloadAction<number>) => {
 			state.questionIndex = action.payload;
@@ -82,9 +85,9 @@ const appSlice = createSlice({
 		setPhraseIndexInput: (state, action: PayloadAction<string>) => {
 			state.phraseIndexInput = action.payload;
 		},
-		setIsListDone: (state, action: PayloadAction<boolean>) => {
-			state.isListDone = action.payload;
-		},
+		// setIsListDone: (state, action: PayloadAction<boolean>) => {
+		// 	state.isListDone = action.payload;
+		// },
 		toggleActiveFeeling: (state, action: PayloadAction<boolean>) => {
 			state.isActiveFeeling = action.payload;
 		},
@@ -98,7 +101,7 @@ const appSlice = createSlice({
 			state.phraseIndex = 0;
 			state.phraseIndexInput = '1';
 			state.feelingIndex = randomizeFeeling();
-			state.isListDone = false;
+			// state.isListDone = false;
 		},
 		goToNextPhrase: (state) => {
 			appSlice.caseReducers.nextPhraseIndex(state);
@@ -120,7 +123,7 @@ export const {
 	setFeelingIndex,
 	nextFeelingIndex,
 	setPhraseIndexInput,
-	setIsListDone,
+	// setIsListDone,
 	toggleActiveFeeling,
 	activateCustomLists,
 	toggleActivateCustomLists,
