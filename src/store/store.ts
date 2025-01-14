@@ -1,20 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartSlice, { CART_PERSISTENT_STATE } from './cart.slice';
-import { setState } from './storage';
-import userSlice, { JWT_PERSISTENT_STATE } from './user.slice';
+import appReducer from './app.slice';
+import { AppState } from './app.type';
 
-export const store = configureStore({
+const saveState = (state: AppState) => {
+	try {
+		const serializedState = JSON.stringify(state);
+		localStorage.setItem('appState', serializedState);
+	} catch {
+		// Игнорируем ошибки
+	}
+};
+
+const store = configureStore({
 	reducer: {
-		user: userSlice,
-		cart: cartSlice
+		app: appReducer
 	}
 });
 
 store.subscribe(() => {
-	setState({jwt: store.getState().user.jwt}, JWT_PERSISTENT_STATE);
+	saveState(store.getState().app);
 });
-store.subscribe(() => {
-	setState(store.getState().cart, CART_PERSISTENT_STATE);
-});
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export default store;

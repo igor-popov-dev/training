@@ -8,7 +8,7 @@ import { Bad } from './pages/Bad/Bad';
 import { Donat } from './pages/Donat/Donat';
 import { Final } from './pages/Final/Final';
 import { Main } from './pages/Main/Main';
-import { store } from './store/store';
+import store from './store/store';
 
 
 // Инициализация Web App
