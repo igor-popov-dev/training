@@ -18709,26 +18709,30 @@ const appSlice = createSlice({
     },
     setCurrentListId: (state, action) => {
       var _a, _b;
-      console.log({ action });
       state.currentListId = action.payload;
       state.phraseIndex = 0;
       state.currentQuestions = ((_a = state.lists.find((item) => item.id === action.payload)) == null ? void 0 : _a.questions) || [];
       state.phrases = ((_b = state.lists.find((item) => item.id === action.payload)) == null ? void 0 : _b.phrases) ?? [];
       state.questionIndex = 0;
       state.phraseIndexInput = "1";
-      console.log(state);
     },
     setPhraseIndex: (state, action) => {
       state.phraseIndex = action.payload;
       state.questionIndex = 0;
     },
     nextPhraseIndex: (state) => {
+      var _a, _b;
       let value = state.phraseIndex;
       value++;
       state.phraseIndex = value === state.phrases.length ? 0 : value;
       if (value >= state.phrases.length) {
-        appSlice.caseReducers.setCurrentListId(state, { payload: state.currentListId + 1, type: "app/setCurrentListId" });
-        appSlice.caseReducers.goToStartList(state);
+        state.currentListId = state.currentListId + 1;
+        state.phraseIndex = 0;
+        state.currentQuestions = ((_a = state.lists.find((item) => item.id === state.currentListId + 1)) == null ? void 0 : _a.questions) || [];
+        state.phrases = ((_b = state.lists.find((item) => item.id === state.currentListId + 1)) == null ? void 0 : _b.phrases) ?? [];
+        state.questionIndex = 0;
+        state.phraseIndexInput = "1";
+        state.feelingIndex = randomizeFeeling();
       }
     },
     setQuestionIndex: (state, action) => {
@@ -18766,8 +18770,22 @@ const appSlice = createSlice({
       state.feelingIndex = randomizeFeeling();
     },
     goToNextPhrase: (state) => {
-      appSlice.caseReducers.nextPhraseIndex(state);
-      appSlice.caseReducers.nextFeelingIndex(state);
+      var _a, _b;
+      let value = state.phraseIndex;
+      value++;
+      state.phraseIndex = value === state.phrases.length ? 0 : value;
+      if (value >= state.phrases.length) {
+        state.currentListId = state.currentListId + 1;
+        state.phraseIndex = 0;
+        state.currentQuestions = ((_a = state.lists.find((item) => item.id === state.currentListId + 1)) == null ? void 0 : _a.questions) || [];
+        state.phrases = ((_b = state.lists.find((item) => item.id === state.currentListId + 1)) == null ? void 0 : _b.phrases) ?? [];
+        state.questionIndex = 0;
+        state.phraseIndexInput = "1";
+        state.feelingIndex = randomizeFeeling();
+      }
+      let valueTemp = state.feelingIndex;
+      valueTemp++;
+      state.feelingIndex = valueTemp === state.feelings.length ? 0 : valueTemp;
       state.phraseIndexInput = state.phraseIndex + 1 + "";
       state.questionIndex = 0;
     }
@@ -19007,4 +19025,4 @@ const router = createBrowserRouter([
 clientExports.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Provider_default, { store, children: /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider2, { router }) }) })
 );
-//# sourceMappingURL=index-CtaMBjOi.js.map
+//# sourceMappingURL=index-BZFgxGa6.js.map
