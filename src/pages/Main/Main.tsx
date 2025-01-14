@@ -172,7 +172,7 @@ export const Main = () => {
 		<div className={cn(styles.thxWrapper, {[styles.displayFlex]: showThx}, {[styles.fadeIn]: showFadeIn}, {[styles.fadeOut]: showFadeOut})}>
 			<h2 className={styles.thxText}>Спасибо!</h2>
 		</div>
-		<Header title={'Выбор списка вопросов'}>
+		<Header title={`Cписок: ${lists.find(item => item.id === currentListId)?.theme}`}>
 			<div className={styles.theme}>
 				<select className={styles.select} onChange={handleSelectChange} value={currentListId}>
 					{lists.map(item => <option value={item.id}>{item.theme}</option>)}
@@ -200,7 +200,7 @@ export const Main = () => {
 				<h1 className={styles.h1} dangerouslySetInnerHTML={{ __html: currentTitle }} />
 				<h2 className={styles.h2}>{`${phraseIndex + 1}. ${phrases[phraseIndex]}`}</h2>
 				<h3 className={cn(styles.h3)}>{feelings[feelingIndex]} <span className={styles.randomize} onClick={setRandomFeeling}>🎲</span></h3>
-				<p className={styles.defenition}>{feelingsItems[feelingIndex].description}</p>
+				<p className={styles.defenition}>{feelingsItems[feelingIndex]?.description ?? ''}</p>
 				<div className={styles.buttons}>
 					<Button appearence="big" onClick={yes}>Да (Что это было?)</Button>
 					<Button appearence="big" onClick={no}>Нет</Button>

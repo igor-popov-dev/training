@@ -57,12 +57,13 @@
     flex-direction: column;
     background: #0d1117;
     padding: 0 20px 20px;
-    margin-top: 106px;
+    margin-top: 120px;
     box-sizing: border-box;
     overflow-y: auto;
 }
 
 .thxWrapper {
+  margin-top: 0;
   display: none;
   position: fixed;
   top: 0;
@@ -229,7 +230,7 @@
     margin: 0;
     position: fixed;
     /* top: 58px; */
-    top: 96px;
+    top: 121px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -441,7 +442,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: 64.5px;
+  top: 90px;
   z-index: 1000;
   border: none;
 }
